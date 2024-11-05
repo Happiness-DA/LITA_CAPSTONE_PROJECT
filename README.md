@@ -18,31 +18,38 @@ dashboard that highlights these findings.
  Use excel function sumif where range = region column, criteria = region, sumrange = total sales column
 
 ##### Using SQL:
--retrieve the total sales for each product category.
+- retrieve the total sales for each product category.
+  
 select SUM(productsale) as Shirt_Sales from [dbo].[Sales Data 1]
 where Product = 'Shirt'
 This query is used individually for all the products 
 
 - find the number of sales transactions in each region.
+
 select region,
 count (*) AS Sales from [dbo].[Sales Data 1]
 group by region
 
 - find the highest-selling product by total sales value.
+  
 select product,
 SUM (PRODUCTSALE) AS totalsales from [dbo].[Sales Data 1]
 group by product
 order by 2 desc
 
 - calculate total revenue per product.
+  
 select SUM(productsale) as Shoes_Sales from [dbo].[Sales Data 1]
 where Product = 'Shoes'
 
 - calculate monthly sales totals for the current year.
+  
 select months, 
 SUM (PRODUCTSALE) AS sales from [dbo].[Sales Data 1]
 where year = '2024'
 group by months;
+
+
 
 
 - find the top 5 customers by total purchase amount.
