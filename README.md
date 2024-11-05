@@ -130,7 +130,10 @@ group by region
 - find the most popular subscription type by the number of customers.
 select [SubscriptionType],
 count (*) as noofcustomers from [dbo].[Customer Data]
-group by subscriptiontype 
+group by subscriptiontype
+
+![Screenshot 2024-11-05 124036](https://github.com/user-attachments/assets/e3268429-2850-42ab-b08b-1c88d870bebf)
+
 
 - find customers who canceled their subscription within 6 months.
 select [CustomerID], [SubscriptionStart], [SubscriptionEnd],
@@ -138,15 +141,22 @@ DATEDIFF(month, [SubscriptionStart], [SubscriptionEnd])
 as duration from [dbo].[Customer Data]
 where [Canceled] = 'true' and datediff(month, [SubscriptionStart], [SubscriptionEnd])<=6
 
+
+![Screenshot 2024-11-05 124054](https://github.com/user-attachments/assets/04f6ce62-20ea-46a0-81db-b06f2d257eab)
+
 - Calculate the average subscription duration for all customers.
 select AVG((DATEDIFF(month,[SubscriptionStart],[SubscriptionEnd] )
 )) as'avgdur' from [dbo].[Customer Data]
+
+ ![Screenshot 2024-11-05 124113](https://github.com/user-attachments/assets/235590f6-1108-4d6b-8df5-3562a8f87278)
   
 - find customers with subscriptions longer than 12 months.
 select [CustomerID], [SubscriptionStart], [SubscriptionEnd],
 DATEDIFF(month, [SubscriptionStart], [SubscriptionEnd])
 as duration from [dbo].[Customer Data]
 where datediff(month, [SubscriptionStart], [SubscriptionEnd])>12
+
+![Screenshot 2024-11-05 124141](https://github.com/user-attachments/assets/ce7fb811-9982-4b5c-b015-2395d6bc999b)
 
 - calculate total revenue by subscription type.
 select Sum ([Revenue]) as totalrev from [dbo].[Customer Data]
@@ -155,10 +165,13 @@ where ([SubscriptionType]) = 'Basic' or
 ([SubscriptionType]) = 'standard' 
 group by [SubscriptionType]
 
-- find the top 3 regions by subscription cancellations.
+![Screenshot 2024-11-05 124527](https://github.com/user-attachments/assets/58d5a0bc-fc56-4176-b253-655fe089dd03)
 
+- find the top 3 regions by subscription cancellations.
 select top 3 Region, COUNT (Canceled) AS CANCELED from [dbo].[Customer Data] 
   group by [Region]
+
+  ![Screenshot 2024-11-05 124600](https://github.com/user-attachments/assets/82356fca-ae1f-419b-ab43-6d5466f554cf)
   
 
 - find the total number of active and canceled subscriptions.
@@ -171,7 +184,11 @@ select Canceled, Count(Canceled) as false from [dbo].[Customer Data]
 WHERE [Canceled] = 'true'
 group by [Canceled]
 
-##### Using PowerBI
+![Screenshot 2024-11-05 124720](https://github.com/user-attachments/assets/dd59d627-f589-464a-929d-7e6fe79d6181)
+
+
+
+#### Using PowerBI
 
 
 
