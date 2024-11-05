@@ -20,16 +20,23 @@ dashboard that highlights these findings.
 ##### Using SQL:
 - retrieve the total sales for each product category.
   
-select SUM(productsale) as Shirt_Sales from [dbo].[Sales Data 1]
-where Product = 'Shirt'
+select SUM(productsale) as Shoes_Sales from [dbo].[Sales Data 1]
+where Product = 'Shoes'
 
 This query is used individually for all the products 
+
+
+
 
 - find the number of sales transactions in each region.
 
 select region,
 count (*) AS Sales from [dbo].[Sales Data 1]
 group by region
+
+
+[Screenshot 2024-11-05 110442](https://github.com/user-attachments/assets/ef49dbf7-caab-4aa9-a82d-c83eee5dbcf1)
+
 
 - find the highest-selling product by total sales value.
   
@@ -38,10 +45,17 @@ SUM (PRODUCTSALE) AS HIGHESTSELLING from [dbo].[Sales Data 1]
 group by product
 order by 2 desc
 
+
+
+
+
+
 - calculate total revenue per product.
   
-select PRODUCT, SUM(productsale) as TOTALREVENUE from [dbo].[Sales Data 1]
+select PRODUCT, SUM(productsale) as totalsales from [dbo].[Sales Data 1]
 GROUP BY PRODUCT
+
+
 
 - calculate monthly sales totals for the current year.
   
@@ -50,11 +64,18 @@ SUM (PRODUCTSALE) AS sales from [dbo].[Sales Data 1]
 where year = '2024'
 group by months;
 
+[IMG_20241105_075351_069~2](https://github.com/user-attachments/assets/ca0b0f59-a3df-4de9-bcfe-91b9d32dd1f0)
+
 - find the top 5 customers by total purchase amount.
 select top 5 [Customer_Id] as Customerid,
 SUM (productsale) as top5 from [dbo].[Sales Data 1] 
 group by [Customer_Id] 
 order by 2 desc
+
+
+[IMG_20241105_083427_474~2](https://github.com/user-attachments/assets/112d5707-869e-477b-8c89-b313b970e3d5)
+
+
 
 - calculate the percentage of total sales contributed by each region.
 
@@ -71,6 +92,9 @@ End) = 0
 
 
 ##### Using PowerBI
+
+
+[IMG_20241105_083137_930~2](https://github.com/user-attachments/assets/763dc1ab-3e33-48f1-ac45-a59431ffdeb5)
 
 
 
@@ -124,9 +148,10 @@ group by [SubscriptionType]
 
 - find the top 3 regions by subscription cancellations.
 
-select top 3 Region, COUNT (Region) AS CANCELED from [dbo].[Customer Data] 
-WHERE [Canceled] = 'true'
-group by [Region] 
+select top 3 Region, COUNT (Canceled) AS CANCELED from [dbo].[Customer Data] 
+  group by [Region]
+  
+
 - find the total number of active and canceled subscriptions.
 
 select Canceled, Count(Canceled) as active from [dbo].[Customer Data] 
