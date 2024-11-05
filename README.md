@@ -21,30 +21,39 @@ dashboard that highlights these findings.
 -retrieve the total sales for each product category.
 select SUM(productsale) as Shirt_Sales from [dbo].[Sales Data 1]
 where Product = 'Shirt'
+This query is used individually for all the products 
+
 - find the number of sales transactions in each region.
 select region,
 count (*) AS Sales from [dbo].[Sales Data 1]
-group by region 
+group by region
+
 - find the highest-selling product by total sales value.
 select product,
-SUM (PRODUCTSALE) AS highestselling from [dbo].[Sales Data 1]
+SUM (PRODUCTSALE) AS totalsales from [dbo].[Sales Data 1]
 group by product
 order by 2 desc
+
 - calculate total revenue per product.
 select SUM(productsale) as Shoes_Sales from [dbo].[Sales Data 1]
 where Product = 'Shoes'
+
 - calculate monthly sales totals for the current year.
 select months, 
 SUM (PRODUCTSALE) AS sales from [dbo].[Sales Data 1]
 where year = '2024'
 group by months;
+
+
 - find the top 5 customers by total purchase amount.
 select top 5 [Customer_Id] as Customerid,
 SUM (productsale) as top5 from [dbo].[Sales Data 1] 
 group by [Customer_Id] 
-order by 1 desc
+order by 2 desc
+
 - calculate the percentage of total sales contributed by each region.
 - identify products with no sales in the last quarter
+
 
 
 ##### Using PowerBI
