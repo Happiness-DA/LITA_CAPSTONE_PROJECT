@@ -28,6 +28,9 @@ This query is used individually for all the products
 
 
 
+
+![Screenshot 2024-11-05 111204](https://github.com/user-attachments/assets/4d181f46-4f61-4dc1-93f1-2b8eae01e7e4)
+
 - find the number of sales transactions in each region.
 
 select region,
@@ -35,7 +38,7 @@ count (*) AS Sales from [dbo].[Sales Data 1]
 group by region
 
 
-[Screenshot 2024-11-05 110442](https://github.com/user-attachments/assets/ef49dbf7-caab-4aa9-a82d-c83eee5dbcf1)
+![Screenshot 2024-11-05 110442](https://github.com/user-attachments/assets/d1cfbe31-a44f-4ebb-bd70-19cf2895a6ae)
 
 
 - find the highest-selling product by total sales value.
@@ -45,9 +48,7 @@ SUM (PRODUCTSALE) AS HIGHESTSELLING from [dbo].[Sales Data 1]
 group by product
 order by 2 desc
 
-
-
-
+![Screenshot 2024-11-05 110721](https://github.com/user-attachments/assets/04f80f15-8dab-42c0-8f46-7f0520405331)
 
 
 - calculate total revenue per product.
@@ -56,6 +57,7 @@ select PRODUCT, SUM(productsale) as totalsales from [dbo].[Sales Data 1]
 GROUP BY PRODUCT
 
 
+![Screenshot 2024-11-05 111303](https://github.com/user-attachments/assets/d00d2839-f9f6-40ad-a8e0-6e58436bb551)
 
 - calculate monthly sales totals for the current year.
   
@@ -64,7 +66,9 @@ SUM (PRODUCTSALE) AS sales from [dbo].[Sales Data 1]
 where year = '2024'
 group by months;
 
-[IMG_20241105_075351_069~2](https://github.com/user-attachments/assets/ca0b0f59-a3df-4de9-bcfe-91b9d32dd1f0)
+![Screenshot 2024-11-05 111439](https://github.com/user-attachments/assets/e3389cb8-cdd9-434e-9ddc-60668a6cc5b2)
+
+
 
 - find the top 5 customers by total purchase amount.
 select top 5 [Customer_Id] as Customerid,
@@ -73,8 +77,8 @@ group by [Customer_Id]
 order by 2 desc
 
 
-[IMG_20241105_083427_474~2](https://github.com/user-attachments/assets/112d5707-869e-477b-8c89-b313b970e3d5)
 
+![Screenshot 2024-11-05 111457](https://github.com/user-attachments/assets/16c19d2a-4fc4-4606-a31c-d43f70197188)
 
 
 - calculate the percentage of total sales contributed by each region.
@@ -89,13 +93,16 @@ when  [OrderDate] between '2024-06-01' and '2024-08-31'
 then 1 else 0
 End) = 0
 
+![Screenshot 2024-11-05 111527](https://github.com/user-attachments/assets/3aaff5ab-70f8-44f1-8fe8-01a4344b5fb0)
+
 
 
 ##### Using PowerBI
 
 
-[IMG_20241105_083137_930~2](https://github.com/user-attachments/assets/763dc1ab-3e33-48f1-ac45-a59431ffdeb5)
 
+
+![Screenshot 2024-11-05 111624](https://github.com/user-attachments/assets/9877ee8c-25bd-4f83-9e97-6e841280bfc2)
 
 
 
@@ -116,7 +123,9 @@ Use excel function Countif(region column, region)
 - retrieve the total number of customers from each region.
 select region,
 count (*) AS Customername from [dbo].[Customer Data]
-group by region 
+group by region
+
+![Screenshot 2024-11-05 121638](https://github.com/user-attachments/assets/9a441c32-a3a8-4ac7-8d7b-63b51dc8ee19)
 
 - find the most popular subscription type by the number of customers.
 select [SubscriptionType],
@@ -162,7 +171,11 @@ select Canceled, Count(Canceled) as false from [dbo].[Customer Data]
 WHERE [Canceled] = 'true'
 group by [Canceled]
 
+##### Using PowerBI
 
 
- 
+
+
+ ![Screenshot 2024-11-05 121936](https://github.com/user-attachments/assets/d86f0290-375e-43a3-81dd-bfe268800d9d)
+
 
