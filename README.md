@@ -33,15 +33,15 @@ group by region
 
 - find the highest-selling product by total sales value.
   
-select product,
-SUM (PRODUCTSALE) AS totalsales from [dbo].[Sales Data 1]
+select TOP 1 product,
+SUM (PRODUCTSALE) AS HIGHESTSELLING from [dbo].[Sales Data 1]
 group by product
 order by 2 desc
 
 - calculate total revenue per product.
   
-select SUM(productsale) as Shoes_Sales from [dbo].[Sales Data 1]
-where Product = 'Shoes'
+select PRODUCT, SUM(productsale) as TOTALREVENUE from [dbo].[Sales Data 1]
+GROUP BY PRODUCT
 
 - calculate monthly sales totals for the current year.
   
@@ -50,11 +50,6 @@ SUM (PRODUCTSALE) AS sales from [dbo].[Sales Data 1]
 where year = '2024'
 group by months;
 
-
-
-
-
-
 - find the top 5 customers by total purchase amount.
 select top 5 [Customer_Id] as Customerid,
 SUM (productsale) as top5 from [dbo].[Sales Data 1] 
@@ -62,7 +57,16 @@ group by [Customer_Id]
 order by 2 desc
 
 - calculate the percentage of total sales contributed by each region.
+
+
 - identify products with no sales in the last quarter
+
+select product from [dbo].[Sales Data 1]
+group by product 
+having sum(case 
+when  [OrderDate] between '2024-06-01' and '2024-08-31'
+then 1 else 0
+End) = 0
 
 
 
@@ -119,7 +123,19 @@ where ([SubscriptionType]) = 'Basic' or
 group by [SubscriptionType]
 
 - find the top 3 regions by subscription cancellations.
+
+select top 3 Region, COUNT (Region) AS CANCELED from [dbo].[Customer Data] 
+WHERE [Canceled] = 'true'
+group by [Region] 
 - find the total number of active and canceled subscriptions.
+
+select Canceled, Count(Canceled) as active from [dbo].[Customer Data] 
+WHERE [Canceled] = 'false'
+group by [Canceled]
+
+select Canceled, Count(Canceled) as false from [dbo].[Customer Data] 
+WHERE [Canceled] = 'true'
+group by [Canceled]
 
 
 
