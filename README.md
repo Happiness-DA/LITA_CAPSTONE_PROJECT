@@ -22,6 +22,7 @@ dashboard that highlights these findings.
   
 select SUM(productsale) as Shirt_Sales from [dbo].[Sales Data 1]
 where Product = 'Shirt'
+
 This query is used individually for all the products 
 
 - find the number of sales transactions in each region.
@@ -48,6 +49,8 @@ select months,
 SUM (PRODUCTSALE) AS sales from [dbo].[Sales Data 1]
 where year = '2024'
 group by months;
+
+
 
 
 
